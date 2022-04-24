@@ -16,7 +16,7 @@ function activeTab() {
         $('#favorite-tab').addClass('tab-inactive');
     }
 
-    if(tabActual.indexOf('crear') >= 0  || tabActual.indexOf('crear') >= 0){
+    if(tabActual.indexOf('crear') >= 0  || tabActual.indexOf('detalle') >= 0){
         $('.btn').attr('hidden');
     }else{
         $('.btn').removeAttr('hidden');

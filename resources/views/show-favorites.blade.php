@@ -1,11 +1,9 @@
 @extends('layouts.home-section')
-@section('section-title', 'favoritos')
-@section('title-list', 'Favoritos')
-@section('list')
-
+@section('section-title', 'favorito')
+@section('list-fav')
 @foreach($favorites as $favorite)
-<div class="card">
-    <div class="bg-no item w-item">
+<div class="card lado">
+    <div class="bg-no item">
         <p class="label-item bg-no">nombre</p>
         <p class="value bg-no">{{$favorite->title}}</p>
     </div>
@@ -24,8 +22,7 @@
     </div>
     @endif
 </div>
-@endforeach
 
 {{$favorites->links('vendor.pagination.simple')}}
 
-@endsection
+@endforeach

@@ -9,10 +9,14 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
-class RelacionController extends Controller
+class AppController extends Controller
 {
     public function index(){
         $users = DB::table('users')->select('id','name')->paginate(10);
-        return view('home', compact('users'));
+        return view('users.list', compact('users'));
+    }
+
+    public function goBack(){
+        return back();
     }
 }

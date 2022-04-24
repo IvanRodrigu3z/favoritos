@@ -31,7 +31,7 @@
                 @else
                 <li><a href="{{url('/')}}">inicio</a></li>
                 <li><a href="{{url('/usuario/registro')}}">registrar</a></li>
-                <li><a href="{{url('ingresar')}}">Ingresar</a></li>
+                <li><a href="{{url('/ingresar')}}">Ingresar</a></li>
                 @endif
             </ul>
         </nav>
@@ -39,7 +39,9 @@
 
     @yield('content')
 
-    
+    <footer>
+        <span>Copy right, todos los derechos reservados &copy; - 2022</span>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="{{asset('js/dinamic.js')}}"></script>
     

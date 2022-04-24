@@ -12,8 +12,11 @@ class FavoriteController extends Controller
 
     public function index(){ //lista los registros
         $user = auth()->id();
-        $favorites = DB::table('favorites')->select('id','url', 'title')
-                    ->where('user_id', '=', $user)->paginate(10);   
+        $favorites = [];
+        if(auth()->check()){
+            $favorites = DB::table('favorites')->select('id','url', 'title')
+                        ->where('user_id', '=', $user)->paginate(10); 
+        }
         return view('favorites.list', compact('favorites'));
     }
 
@@ -23,10 +26,16 @@ class FavoriteController extends Controller
     }
 
     public function create(){
-        $favorites = DB::table('favorites')->select('id','url', 'title')->paginate(10);   
         $categories = Category::all();
 
-        return view('favorites.create', compact('favorites', 'categories'));
+        $user = auth()->id();
+        $favorites = [];
+        if(auth()->check()){
+            $favorites = DB::table('favorites')->select('id','url', 'title')
+                        ->where('user_id', '=', $user)->paginate(10); 
+        }
+
+        return view('favorites.create', compact('categories', 'favorites'));
     }
 
     public function save(Request $request){ //guarda el registro
@@ -60,7 +69,14 @@ class FavoriteController extends Controller
 
     public function listFavoriteUser($idUser){
         $users = DB::table('users')->select('id','name')->paginate(10);
-        $favorites = DB::table('favorites')->where('user_id', $idUser)->paginate(10); 
-        return view('favorites.list', compact('favorites', 'users'));
+        $favorites = DB::table('favorites')->where([
+            ['user_id', $idUser],
+            ['visibility', 'public']
+        ])->take(10)->paginate(10); 
+        return view('favorites.list', compact('favorites', 'users', 'idUser'));
+    }
+
+    public function userFavorites($id){
+        return view('show-favorites', compact('id'));
     }
 }

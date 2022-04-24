@@ -1,6 +1,6 @@
-@extends('favorites.home')
+@extends('layouts.home-section')
 @section('title', 'editar')
-@section('form-fav-detail')
+@section('form')
 <div class="form-create">
     <h2>Editar favorito</h2>
     <form action="{{route('favorite.save')}}" method="POST">
@@ -12,7 +12,7 @@
             <input class="input-form-fav" type="text" name="title" value="{{$favorite->title}}">
         </div>
         <div>
-            <textarea name="description" id="" cols="30" rows="10" class="textarea-form-fav" value="favorite->description"></textarea>
+            <textarea name="description" id="" cols="30" rows="10" class="textarea-form-fav">{{$favorite->description}}</textarea>
         </div>
         <div>
             <label for="category">Categoria</label>

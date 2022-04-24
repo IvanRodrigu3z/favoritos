@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('home');
 // });
 
-Route::get('/', 'App\Http\Controllers\RelacionController@index');
+Route::get('/', 'App\Http\Controllers\AppController@index');
+Route::get('/atras', 'App\Http\Controllers\AppController@goBack');
 
 Route::get('/usuario/registro', 'App\Http\Controllers\UserController@store');
 Route::post('/usuario', 'App\Http\Controllers\UserController@create')->name('users.register');
@@ -30,6 +31,7 @@ Route::get('/favorite/user/{user}', 'App\Http\Controllers\FavoriteController@lis
 Route::get('/inicio/favorito', 'App\Http\Controllers\FavoriteController@index');
 Route::get('/favorito/crear', 'App\Http\Controllers\FavoriteController@create');
 Route::get('/favorito/lista', 'App\Http\Controllers\FavoriteController@list');
+Route::get('/usuario/favorito', 'App\Http\Controllers\FavoriteController@userFavorites');
 
 Route::get('/favorito/detalle/{favorite}', 'App\Http\Controllers\FavoriteController@edit')->name('favorite.edit');
 Route::post('/favorito/guardar', 'App\Http\Controllers\FavoriteController@save')->name('favorite.save');

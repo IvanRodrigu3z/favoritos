@@ -1,21 +1,19 @@
-@extends('layouts.app')
-@section('title', 'listar')
-@section('content')
+@extends('home')
+@section('title', 'Usuarios')
+@section('title-list', 'Usuarios')
+@section('list')
 
-<h1>listar usuarios</h1>
-
-<form action="{{route('users.list')}}" method="POST">
-    @csrf
-    <label for="name">Nombre:
-        <input name="name" type="text">
-    </label> <br>
-    <label for="email">Correo:
-        <input name="email" type="text">
-    </label><br>
-    <label for="email">Contraseña:
-        <input name="password" type="password">
-    </label><br>
-    <button type="submit">registrar</button>
-</form>
+@foreach($users as $user)
+<div class="card between">
+    <div class="bg-no item">
+        <p class="label-item bg-no">nombre</p>
+        <p class="value bg-no">{{$user->name}}</p>
+    </div>
+    <a href="{{route('list.favorite.user', $user->id)}}" class="bg-no action t-green">Ver favoritos</a>
+</div>
+@endforeach
+<div class="fav-card">
+    @yield('list-fav')
+</div>
 
 @endsection

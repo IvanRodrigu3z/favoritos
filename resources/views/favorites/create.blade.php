@@ -1,15 +1,15 @@
-@extends('favorites.home')
+@extends('favorites.list')
 @section('title', 'crear')
-@section('form-fav')
+@section('form')
 <div class="form-create">
     <h2>Crear favorito</h2>
     <form action="{{route('favorite.save')}}" method="POST">
         @csrf
         <div>
-            <input class="input-form-fav" type="text" name="url" placeholder="Url">
+            <input class="input-form-fav" type="text" name="title" placeholder="Titulo">
         </div>
         <div>
-            <input class="input-form-fav" type="text" name="title" placeholder="Titulo">
+            <input class="input-form-fav" type="text" name="url" placeholder="Url">
         </div>
         <div>
             <textarea name="description" id="" cols="30" rows="10" class="textarea-form-fav" placeholder="Descripción"></textarea>

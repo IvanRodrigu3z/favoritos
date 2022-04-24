@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@section('title', 'Home')
 @section('content')
 
 <div class="content">
@@ -13,30 +12,21 @@
         </ul>
         @yield('content-fav')
     </div>
-    <div id="categories">
+    @else
+
+    <div class="btn-back">
+        <a href="{{url('/atras')}}">Volver</a>
+    </div>
+
+    <div class="home">
+        <div class="title-list">
+            <h3 class="bg-no">@yield('title-list')</h3>
+        </div>
+
+        @yield('list')
 
     </div>
-    @else
-    <p>listado de usuarios con sus favoritos añadidos recientemente</p>
-    <div class="home">
-        <h3 class="title-list">Usuarios</h3>
-        <div class="content-card">
-            <div class="user-card">
-                @foreach($users as $user)
-                <div class="card">
-                    <span class="item">{{$user->name}}</span>
-                    <a href="{{route('list.favorite.user', $user->id)}}" class="item action t-green">Ver favoritos</a>
-                </div>
-                @endforeach
-            </div>
-            <div class="fav-card">
-                @yield('list-fav')
-            </div>
-        </div>
-    </div>
+
     @endif
 </div>
-
-
-
 @endsection
